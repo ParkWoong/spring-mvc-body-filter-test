@@ -18,7 +18,10 @@ src/test/java/io/github/parkwoong/example/BodyFilterTest.java
 
 ### Code explanation
 
-`RequestHistoryLogger` wraps the request and replays its bytes so the controller can still read the body. `ResponseHistoryLogger` wraps the response and copies its body back to the client. `EchoController` gives a small endpoint for the test. The example does not store or print body contents.
+`RequestHistoryLogger` wraps the request and replays its bytes so the controller can still read
+the body. `ResponseHistoryLogger` wraps the response and copies its body back to the client.
+`EchoController` gives a small endpoint for the test. The example does not store or print body
+contents.
 
 ### Run and test
 
@@ -30,11 +33,30 @@ mvn clean verify
 mvn spring-boot:run
 ```
 
-Send `POST /echo` with a text body. The test confirms the same body reaches the controller and client.
+Send `POST /echo` with a text body. The test confirms the same body reaches the controller and
+client.
 
 #### Postman API
 
-Send POST http://localhost:8080/echo with Content-Type: text/plain and raw body hello. Expected: HTTP 200 with body hello. The request and response filters still see the body.
+##### Echo a request body
+
+**Request**
+
+- Method: POST
+- URL: http://localhost:8080/echo
+- Content-Type: text/plain
+
+~~~text
+hello
+~~~
+
+**Response**
+
+- Status: 200 OK
+
+~~~text
+hello
+~~~
 
 ## KR
 
@@ -52,11 +74,13 @@ src/test/java/io/github/parkwoong/example/BodyFilterTest.java
 
 ### 코드 설명
 
-`RequestHistoryLogger`가 요청을 감싸고 바이트를 다시 전달해 컨트롤러도 본문을 읽을 수 있게 합니다. `ResponseHistoryLogger`는 응답을 감싸고 본문을 클라이언트에 복사합니다. `EchoController`는 테스트용 엔드포인트입니다. 본문을 저장하거나 출력하지 않습니다.
+`RequestHistoryLogger`가 요청을 감싸고 바이트를 다시 전달해 컨트롤러도 본문을 읽을 수 있게 한다.
+`ResponseHistoryLogger`는 응답을 감싸고 본문을 클라이언트에 복사한다. `EchoController`는
+테스트용 엔드포인트이다. 본문을 저장하거나 출력하지 않는다.
 
 ### 실행과 테스트
 
-JDK 8과 Maven 3.6.3 이상을 사용합니다. 저장소 루트에서 실행하세요:
+JDK 8, Maven 3.6.3 이상 사용. 저장소 루트에서 실행.
 
 ```sh
 java -version
@@ -64,8 +88,26 @@ mvn clean verify
 mvn spring-boot:run
 ```
 
-텍스트 본문을 `POST /echo`로 보내세요. 테스트는 같은 본문이 컨트롤러와 클라이언트에 전달되는지 확인합니다.
+`POST /echo`에 텍스트 본문 전송. 테스트는 같은 본문이 컨트롤러와 클라이언트에 전달되는지 확인한다.
 
 #### Postman API
 
-Content-Type: text/plain으로 POST http://localhost:8080/echo에 raw 본문 hello를 보내세요. 예상 결과: HTTP 200과 본문 hello입니다. 요청·응답 필터도 본문을 확인합니다.
+##### 요청 본문 반환
+
+**요청**
+
+- 메서드: POST
+- URL: http://localhost:8080/echo
+- Content-Type: text/plain
+
+~~~text
+hello
+~~~
+
+**응답**
+
+- 상태: 200 OK
+
+~~~text
+hello
+~~~
