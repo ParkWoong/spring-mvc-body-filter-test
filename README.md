@@ -32,6 +32,10 @@ mvn spring-boot:run
 
 Send `POST /echo` with a text body. The test confirms the same body reaches the controller and client.
 
+#### Postman API
+
+Send POST http://localhost:8080/echo with Content-Type: text/plain and raw body hello. Expected: HTTP 200 with body hello. The request and response filters still see the body.
+
 ## KR
 
 ### 프로젝트 구조
@@ -61,3 +65,7 @@ mvn spring-boot:run
 ```
 
 텍스트 본문을 `POST /echo`로 보내세요. 테스트는 같은 본문이 컨트롤러와 클라이언트에 전달되는지 확인합니다.
+
+#### Postman API
+
+Content-Type: text/plain으로 POST http://localhost:8080/echo에 raw 본문 hello를 보내세요. 예상 결과: HTTP 200과 본문 hello입니다. 요청·응답 필터도 본문을 확인합니다.
